@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textI">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtusername2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Nama"
+                android:textSize="12dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtnomerhp1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:drawableLeft="@drawable/ic_baseline_contact_phone_24"
+                android:drawablePadding="10dp"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Nomor HP"
+                android:inputType="number"
+                android:textColorHint="#000000"
+                android:textSize="12dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtnoktp1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:drawableLeft="@drawable/ic_baseline_contact_phone_24"
+                android:drawablePadding="10dp"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Nomor KTP"
+                android:inputType="number"
+                android:textColorHint="#000000"
+                android:textSize="12dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textI">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtalamat1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:drawableLeft="@drawable/ic_baseline_location_on_24"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Alamat"
+                android:textSize="12dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+<!--        <Button-->
+<!--            android:id="@+id/btnedit"-->
+<!--            android:layout_width="218dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:background="@drawable/costum2"-->
+<!--            android:text="Edit"-->
+<!--            android:textColor="#fff" />-->
+        <Button
+            android:id="@+id/btndelete"
+            android:layout_width="218dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/costum3"
+            android:text="Delete"
+            android:textColor="#fff" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

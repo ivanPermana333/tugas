@@ -1,6 +1,9 @@
 package com.example.myapplication;
 
-public class modelAdmin {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class modelAdmin implements Parcelable {
 
 
 
@@ -10,6 +13,29 @@ public class modelAdmin {
     private String nohp;
     private String email;
 
+
+    protected modelAdmin(Parcel in) {
+        id = in.readString();
+        nama = in.readString();
+        nohp = in.readString();
+        email = in.readString();
+    }
+
+    public static final Creator<modelAdmin> CREATOR = new Creator<modelAdmin>() {
+        @Override
+        public modelAdmin createFromParcel(Parcel in) {
+            return new modelAdmin(in);
+        }
+
+        @Override
+        public modelAdmin[] newArray(int size) {
+            return new modelAdmin[size];
+        }
+    };
+
+    public modelAdmin() {
+
+    }
 
     public String getId() {
         return id;
@@ -43,4 +69,16 @@ public class modelAdmin {
         this.email = email;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
+        parcel.writeString(nama);
+        parcel.writeString(nohp);
+        parcel.writeString(email    );
+    }
 }

@@ -71,7 +71,7 @@ public class Register extends AppCompatActivity {
                 body.put("nohp", nohp);
                 body.put("alamat", alamat);
                 body.put("role", "1");
-                AndroidNetworking.post("http://192.168.1.14/tugasapi/register.php")
+                AndroidNetworking.post("http://192.168.6.182/tugasapi/register.php")
                         .addBodyParameter(body)
                         .setOkHttpClient(((Initial) getApplication()).getOkHttpClient())
                         .setPriority(Priority.MEDIUM)

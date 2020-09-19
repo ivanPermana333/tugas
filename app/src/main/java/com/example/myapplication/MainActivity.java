@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 HashMap<String, String> body = new HashMap<>();
                 body.put("email", username);
                 body.put("password", password);
-                AndroidNetworking.post("http://192.168.1.14/tugasapi/login.php")
+                AndroidNetworking.post("http://192.168.6.182/tugasapi/login.php")
                         .addBodyParameter(body)
                         .setOkHttpClient(((Initial) getApplication()).getOkHttpClient())
                         .setPriority(Priority.MEDIUM)
