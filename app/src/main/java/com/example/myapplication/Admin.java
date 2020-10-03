@@ -21,24 +21,73 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Admin extends AppCompatActivity {
+public class Admin extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private RecyclerView recyclerView;
     private Adapter adapter;
     private ArrayList<modelAdmin> modelAdminArrayList = new ArrayList<>();
+    private SwipeRefreshLayout swipeRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
         recyclerView = (RecyclerView) findViewById(R.id.rview);
-        AndroidNetworking.get("http://192.168.6.182/tugasapi/show_user.php")
+        swipeRefresh = findViewById(R.id.swipe_view);
+
+
+        swipeRefresh.setOnRefreshListener(this);
+        swipeRefresh.post(new Runnable() {
+            private void doNothing() {
+
+            }
+
+            @Override
+            public void run() {
+                getCustomer();
+            }
+        });
+
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+    }
+
+    @Override
+    public void onRefresh() {
+        getCustomer();
+    }
+
+    public void show(){
+        adapter = new Adapter(Admin.this, modelAdminArrayList);
+        recyclerView.setAdapter(adapter );
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        getCustomer();
+        adapter.notifyDataSetChanged();
+        show();
+    }
+
+    private void getCustomer (){
+        swipeRefresh.setRefreshing(true);
+        AndroidNetworking.get("http://192.168.43.92/tugasapi/show_user.php")
                 .setPriority(Priority.LOW)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        swipeRefresh.setRefreshing(false);
+                        if (adapter != null) {
+                            adapter.clearData();
+                            adapter.notifyDataSetChanged();
+                        }
+                        if (modelAdminArrayList != null)  modelAdminArrayList.clear();
                         try {
+
                             String status = response.getString("STATUS");
                             if (status.equalsIgnoreCase("SUCCESS")) {
                                 JSONObject payload = response.getJSONObject("PAYLOAD");
@@ -53,11 +102,13 @@ public class Admin extends AppCompatActivity {
                                     madmin.setNama(item.getString("NAMA"));
                                     madmin.setNohp(item.getString("NOHP"));
                                     madmin.setEmail(item.getString("EMAIL"));
+                                    madmin.setNoktp(item.getString("NOKTP"));
+                                    madmin.setAlamat(item.getString("ALAMAT"));
                                     modelAdminArrayList.add(madmin);
 
                                 }
+                                show();
                                 Log.d("Array", String.valueOf(modelAdminArrayList.size()));
-                                adapter.notifyDataSetChanged();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -69,12 +120,5 @@ public class Admin extends AppCompatActivity {
                         Log.e("anError", anError.getLocalizedMessage());
                     }
                 });
-
-        adapter = new Adapter(Admin.this, modelAdminArrayList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Admin.this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
-
     }
-
 }

@@ -12,6 +12,8 @@ public class modelAdmin implements Parcelable {
     private String nama;
     private String nohp;
     private String email;
+    private String alamat;
+    private String noktp;
 
 
     protected modelAdmin(Parcel in) {
@@ -19,6 +21,8 @@ public class modelAdmin implements Parcelable {
         nama = in.readString();
         nohp = in.readString();
         email = in.readString();
+        noktp = in.readString();
+        alamat = in.readString();
     }
 
     public static final Creator<modelAdmin> CREATOR = new Creator<modelAdmin>() {
@@ -35,6 +39,27 @@ public class modelAdmin implements Parcelable {
 
     public modelAdmin() {
 
+    }
+
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
+    public String getNoktp() {
+        return noktp;
+    }
+
+    public void setNoktp(String noktp) {
+        this.noktp = noktp;
+    }
+
+    public static Creator<modelAdmin> getCREATOR() {
+        return CREATOR;
     }
 
     public String getId() {
@@ -79,6 +104,8 @@ public class modelAdmin implements Parcelable {
         parcel.writeString(id);
         parcel.writeString(nama);
         parcel.writeString(nohp);
-        parcel.writeString(email    );
+        parcel.writeString(email);
+        parcel.writeString(noktp);
+        parcel.writeString(alamat);
     }
 }

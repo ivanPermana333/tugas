@@ -97,26 +97,26 @@
 
 
 
-<!--        <Button-->
-<!--            android:id="@+id/btnedit"-->
-<!--            android:layout_width="218dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:layout_marginRight="20dp"-->
-<!--            android:background="@drawable/costum2"-->
-<!--            android:text="Edit"-->
-<!--            android:textColor="#fff" />-->
         <Button
-            android:id="@+id/btndelete"
+            android:id="@+id/btnedit"
             android:layout_width="218dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/costum3"
-            android:text="Delete"
+            android:background="@drawable/costum2"
+            android:text="Save  "
             android:textColor="#fff" />
+<!--        <Button-->
+<!--            android:id="@+id/btndelete"-->
+<!--            android:layout_width="218dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:background="@drawable/costum3"-->
+<!--            android:text="Edit"-->
+<!--            android:textColor="#fff" />-->
 
     </LinearLayout>
 
