@@ -15,7 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Sepeda"></activity>
+        <activity android:name=".EditSepeda"></activity>
+        <activity android:name=".TambahSepeda" />
+        <activity android:name=".Sepeda" />
         <activity android:name=".UserActivity" />
         <activity android:name=".Register" />
         <activity android:name=".Admin" />

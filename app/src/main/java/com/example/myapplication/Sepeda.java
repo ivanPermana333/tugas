@@ -39,7 +39,7 @@ public class Sepeda extends AppCompatActivity implements SwipeRefreshLayout.OnRe
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent fab1 = new Intent(getApplicationContext(),Sepeda.class);
+                Intent fab1 = new Intent(getApplicationContext(),TambahSepeda.class);
                 startActivity(fab1);
 
             }
@@ -97,18 +97,18 @@ public class Sepeda extends AppCompatActivity implements SwipeRefreshLayout.OnRe
                             if (status.equalsIgnoreCase("SUCCESS")) {
                                 JSONObject payload = response.getJSONObject("PAYLOAD");
                                 JSONArray data = payload.getJSONArray("DATA");
-                                Log.d("Data", String.valueOf(data));
+                                Log.d("data", String.valueOf(data));
                                 for (int i = 0; i < data.length(); i++) {
                                     JSONObject item = data.getJSONObject(i);
 
                                     modelSepeda msepeda = new modelSepeda();
 
                                     msepeda.setId(item.getString("ID"));
-                                    msepeda.setJenis(item.getString("JENIS"));
-                                    msepeda.setKode(item.getString("KODE"));
-                                    msepeda.setMerk(item.getString("MERK"));
-                                    msepeda.setHargasewa(item.getString("HARGASEWA"));
-                                    msepeda.setWarna(item.getString("WARNA"));
+                                    msepeda.setJenis(item.getString("jenis"));
+                                    msepeda.setKode(item.getString("kode"));
+                                    msepeda.setMerk(item.getString("merk"));
+                                    msepeda.setWarna(item.getString("warna"));
+                                    msepeda.setHargasewa(item.getString("hargasewa"));
                                     modelSepedaArrayList.add(msepeda);
 
                                 }

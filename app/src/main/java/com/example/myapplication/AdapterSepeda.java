@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -65,7 +66,7 @@ public class AdapterSepeda extends RecyclerView.Adapter<AdapterSepeda.AdapterVie
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i = new Intent(mCtx, UserActivity.class);
+                    Intent i = new Intent(mCtx, EditSepeda.class);
                     i.putExtra("EXTRA_CUSTOMER", dataList.get(getAdapterPosition()));
                     mCtx.startActivity(i);
                 }
