@@ -39,28 +39,18 @@
                 android:textSize="11sp"
                 android:textStyle="bold|italic" />
 
-            <Button
-                android:id="@+id/datasepeda"
-                android:textColor="#fff"
-                android:background="@drawable/costum1"
-                android:layout_width="90dp"
-                android:layout_height="37dp"
-                android:layout_marginLeft="100dp"
-                android:text="Data Sepeda"
-                android:textSize="10sp"
-                android:textStyle="bold|italic" />
 
 
         </LinearLayout>
 
-<!--        <ImageView-->
-<!--            android:src="@drawable/ic_baseline_create_new_folder_24"-->
-<!--            android:id="@+id/ivMore"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentRight="true"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:layout_marginRight="10dp" />-->
+        <!--        <ImageView-->
+        <!--            android:src="@drawable/ic_baseline_create_new_folder_24"-->
+        <!--            android:id="@+id/ivMore"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignParentRight="true"-->
+        <!--            android:layout_centerVertical="true"-->
+        <!--            android:layout_marginRight="10dp" />-->
 
     </RelativeLayout>
 
@@ -122,14 +112,14 @@
                     android:paddingBottom="5sp">
 
 
-<!--                    <TextView-->
-<!--                        android:id="@+id/tvUserName"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:gravity="left"-->
-<!--                        android:text="Delete"-->
-<!--                        android:textColor="@android:color/white"-->
-<!--                        android:textSize="10.8sp" />-->
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/tvUserName"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:gravity="left"-->
+                    <!--                        android:text="Delete"-->
+                    <!--                        android:textColor="@android:color/white"-->
+                    <!--                        android:textSize="10.8sp" />-->
 
 
                 </LinearLayout>
@@ -143,25 +133,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:src="@drawable/ic_baseline_create_new_folder_24"-->
-<!--            app:fabSize="normal"-->
-<!--            android:layout_marginRight="20dp"-->
-<!--            android:layout_marginBottom="30dp"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:layout_alignParentRight="true"-->
-<!--            app:elevation="10dp"-->
-<!--            android:id="@+id/fab1"/>-->
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_create_new_folder_24"
+                    app:fabSize="normal"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    app:elevation="10dp"
+                    android:id="@+id/fab2"/>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_view"
+            android:id="@+id/swipe_view1"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rview"
+                android:id="@+id/rview1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"

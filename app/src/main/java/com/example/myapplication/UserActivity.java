@@ -49,12 +49,12 @@ public class UserActivity extends AppCompatActivity {
             id = dataCust.getId();
 
 //            btnDelete = findViewById(R.id.btndelete);
-            btnDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    deleteData(id);
-                }
-            });
+//            btnDelete.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    deleteData(id);
+//                }
+//            });
 
         }else {
             finish();
@@ -165,42 +165,42 @@ public class UserActivity extends AppCompatActivity {
                     });
         }
 
-        private void deleteData(String id) {
-            sharedPreferences = getSharedPreferences("pref", MODE_PRIVATE);
-            String id_auth = sharedPreferences.getString("id", "");
-//            String id = getIntent().getStringExtra("u_id");
-            AndroidNetworking.post("http://192.168.43.92/tugasapi/delete_user.php")
-                    .addBodyParameter("id", id)
-//                    .addBodyParameter("id_auth", id_auth)
-                    .setTag("test")
-                    .setPriority(Priority.MEDIUM)
-                    .build()
-                    .getAsJSONObject(new JSONObjectRequestListener() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            // do anything with response
-                            try {
-                                String status = response.getString("status");
-                                String message = response.getString("message");
-                                if (status.equals("success")) {
-                                    Toast.makeText(UserActivity.this, message, Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(UserActivity.this, MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(UserActivity.this, message, Toast.LENGTH_SHORT).show();
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            Log.d("test", String.valueOf(response));
-                        }
-
-                        @Override
-                        public void onError(ANError error) {
-                            // handle error
-                            Log.d("anError", error.getLocalizedMessage());
-                        }
-                    });
-        }
+//        private void deleteData(String id) {
+//            sharedPreferences = getSharedPreferences("pref", MODE_PRIVATE);
+//            String id_auth = sharedPreferences.getString("id", "");
+////            String id = getIntent().getStringExtra("u_id");
+//            AndroidNetworking.post("http://192.168.43.92/tugasapi/delete_user.php")
+//                    .addBodyParameter("id", id)
+////                    .addBodyParameter("id_auth", id_auth)
+//                    .setTag("test")
+//                    .setPriority(Priority.MEDIUM)
+//                    .build()
+//                    .getAsJSONObject(new JSONObjectRequestListener() {
+//                        @Override
+//                        public void onResponse(JSONObject response) {
+//                            // do anything with response
+//                            try {
+//                                String status = response.getString("status");
+//                                String message = response.getString("message");
+//                                if (status.equals("success")) {
+//                                    Toast.makeText(UserActivity.this, message, Toast.LENGTH_SHORT).show();
+//                                    Intent intent = new Intent(UserActivity.this, MainActivity.class);
+//                                    startActivity(intent);
+//                                    finish();
+//                                } else {
+//                                    Toast.makeText(UserActivity.this, message, Toast.LENGTH_SHORT).show();
+//                                }
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
+//                            Log.d("test", String.valueOf(response));
+//                        }
+//
+//                        @Override
+//                        public void onError(ANError error) {
+//                            // handle error
+//                            Log.d("anError", error.getLocalizedMessage());
+//                        }
+//                    });
+//        }
 }

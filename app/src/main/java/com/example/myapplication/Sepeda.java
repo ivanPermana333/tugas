@@ -8,59 +8,42 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.Toast;
+import android.view.View;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import android.view.View;
-import android.widget.Toast;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class Admin extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class Sepeda extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
-    Button btndatasepeda;
     private RecyclerView recyclerView;
-    private Adapter adapter;
-    private ArrayList<modelAdmin> modelAdminArrayList = new ArrayList<>();
+    private AdapterSepeda adapterS;
+    private ArrayList<modelSepeda> modelSepedaArrayList = new ArrayList<>();
     private SwipeRefreshLayout swipeRefresh;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin);
-        recyclerView = (RecyclerView) findViewById(R.id.rview);
-        swipeRefresh = findViewById(R.id.swipe_view);
-        btndatasepeda = findViewById(R.id.datasepeda);
-        btndatasepeda.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_sepeda);
+        recyclerView = (RecyclerView) findViewById(R.id.rview1);
+        swipeRefresh = findViewById(R.id.swipe_view1);
+
+        FloatingActionButton floatingActionButton=findViewById(R.id.fab2);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent spd = new Intent(getApplicationContext(),Sepeda.class);
-                startActivity(spd);
+                Intent fab1 = new Intent(getApplicationContext(),Sepeda.class);
+                startActivity(fab1);
 
             }
         });
-
-//        FloatingActionButton floatingActionButton=findViewById(R.id.fab1);
-//        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent fab1 = new Intent(getApplicationContext(),Sepeda.class);
-//                startActivity(fab1);
-//
-//            }
-//        });
-
-
         swipeRefresh.setOnRefreshListener(this);
         swipeRefresh.post(new Runnable() {
             private void doNothing() {
@@ -76,7 +59,6 @@ public class Admin extends AppCompatActivity implements SwipeRefreshLayout.OnRef
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
     }
 
     @Override
@@ -84,33 +66,31 @@ public class Admin extends AppCompatActivity implements SwipeRefreshLayout.OnRef
         getCustomer();
     }
 
-    public void show(){
-        adapter = new Adapter(Admin.this, modelAdminArrayList);
-        recyclerView.setAdapter(adapter );
+    private void show() {
+        adapterS = new AdapterSepeda(Sepeda.this, modelSepedaArrayList);
+        recyclerView.setAdapter(adapterS );
     }
-
     @Override
     protected void onRestart() {
         super.onRestart();
         getCustomer();
-        adapter.notifyDataSetChanged();
+        adapterS.notifyDataSetChanged();
         show();
     }
-
     private void getCustomer (){
         swipeRefresh.setRefreshing(true);
-        AndroidNetworking.get("http://192.168.43.92/tugasapi/show_user.php")
+        AndroidNetworking.get("http://192.168.43.92/tugasapi/show_databarang.php")
                 .setPriority(Priority.LOW)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
                         swipeRefresh.setRefreshing(false);
-                        if (adapter != null) {
-                            adapter.clearData();
-                            adapter.notifyDataSetChanged();
+                        if (adapterS != null) {
+                            adapterS.clearData();
+                            adapterS.notifyDataSetChanged();
                         }
-                        if (modelAdminArrayList != null)  modelAdminArrayList.clear();
+                        if (modelSepedaArrayList != null)  modelSepedaArrayList.clear();
                         try {
 
                             String status = response.getString("STATUS");
@@ -121,19 +101,19 @@ public class Admin extends AppCompatActivity implements SwipeRefreshLayout.OnRef
                                 for (int i = 0; i < data.length(); i++) {
                                     JSONObject item = data.getJSONObject(i);
 
-                                    modelAdmin madmin = new modelAdmin();
+                                    modelSepeda msepeda = new modelSepeda();
 
-                                    madmin.setId(item.getString("ID"));
-                                    madmin.setNama(item.getString("NAMA"));
-                                    madmin.setNohp(item.getString("NOHP"));
-                                    madmin.setEmail(item.getString("EMAIL"));
-                                    madmin.setNoktp(item.getString("NOKTP"));
-                                    madmin.setAlamat(item.getString("ALAMAT"));
-                                    modelAdminArrayList.add(madmin);
+                                    msepeda.setId(item.getString("ID"));
+                                    msepeda.setJenis(item.getString("JENIS"));
+                                    msepeda.setKode(item.getString("KODE"));
+                                    msepeda.setMerk(item.getString("MERK"));
+                                    msepeda.setHargasewa(item.getString("HARGASEWA"));
+                                    msepeda.setWarna(item.getString("WARNA"));
+                                    modelSepedaArrayList.add(msepeda);
 
                                 }
                                 show();
-                                Log.d("Array", String.valueOf(modelAdminArrayList.size()));
+                                Log.d("Array", String.valueOf(modelSepedaArrayList.size()));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -146,4 +126,6 @@ public class Admin extends AppCompatActivity implements SwipeRefreshLayout.OnRef
                     }
                 });
     }
+
+
 }
